@@ -1,0 +1,12 @@
+<%= render 'shared/error_messages', object: @bank_account %>
+<%= form_with model: @bank_account do |f|  %>
+  <div class="form-group">
+    <%= f.label 'name' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label 'balance' %>
+    <%= f.text_field :balance, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Submit', class: 'btn btn-primary col-sm-7' %>
+<% end %>

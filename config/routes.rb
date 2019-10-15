@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   root to: 'bank_accounts#index'
   resources :users do
     member do
-      get 'withdraw'
+      get 'new_withdraw'
+      post 'withdraw'
     end
   end
 end

@@ -1,0 +1,11 @@
+var account = $('#account').val();
+
+$.ajax({
+  type:"GET",
+  url:"withdraw",
+  data: { account: account },
+  dataType:"json",
+  success:function(){
+    alert('<%= @result %>');
+  }
+});

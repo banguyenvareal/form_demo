@@ -5,10 +5,15 @@ class UsersController < ApplicationController
   end
 
   def withdraw
-    user = current_user
-    # respond_to do |f|
-    #   f.html { redirect_to withdraw_user(current_user) }
-    #   f.js
-    # end
+    binding.pry
+    @result=current_user.bank_accounts.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json {render json: @test}
+    end
+  end
+
+  def new_withdraw
+    @user = current_user
   end
 end

@@ -9,16 +9,25 @@ class BankAccountsController < ApplicationController
 
   def create
     @bank_account = current_user.bank_accounts.new(bank_account_params)
-    if @bank_account.save
-      flash[:success] = 'You have created a new bank account'
-      redirect_to bank_accounts_path
-    else
-      render 'new'
+    render js: "alert('The number is: #{params}')"
+    respond_to do |format|
+      if @bank_account.save
+        format.html { redirect_to bank_accounts_path, notice: 'bank_account was successfully created.' }
+      else
+        format.html { render :new, notice: 'error' }
+      end
     end
   end
 
-  def new_withdraw
-    binding.pry
+
+
+  def show
+    # @bank_account = current_user.bank_accounts.find_by(id: params[:id])
+    #   render js: "alert('The number is: #{params[:id]}')"
+  end
+
+  def update
+
   end
 
   private
