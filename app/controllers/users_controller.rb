@@ -6,11 +6,6 @@ class UsersController < ApplicationController
 
   def withdraw
     binding.pry
-    @result=current_user.bank_accounts.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.json {render json: @test}
-    end
   end
 
   def new_withdraw
