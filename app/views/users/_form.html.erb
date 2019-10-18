@@ -1,14 +1,16 @@
-<%= form_for @user, remote: true, url: withdraw_user_path, method: :post do |f|  %>
+<%= render 'shared/error_messages', object: @user %>
+<%= form_for @user, url: withdraw_user_path, method: :get do |f|  %>
   <div class="form-group">
     <%= f.label 'Money' %>
-    <input id="money" type="text" />
+    <%= number_field_tag :money, 0, required: true%>
   </div>
 
   <div class="form-group">
     <%= f.label 'Bank account' %>
-      <% options = options_for_select(@user.bank_accounts.map{ |account| [account.name, account.id] }) %>
-    <%= select_tag('account_id', options , prompt: "Please select an account:", class: "form-control", id: 'accounts') %>
-    <%= f.submit 'Withdraw', id: "btn-withdraw", remote: true %>
+    <% options = options_for_select(
+      @user.bank_accounts.map{ |account| [account.name + ': ' + account.balance.to_s + '$', account.id] })
+    %>
+    <%= select_tag('account_id', options , prompt: "Please select an account:", class: "form-control", id: 'accounts', required: true) %>
+    <%= f.submit 'Withdraw', id: "btn-withdraw"%>
   </div>
 <% end %>
-

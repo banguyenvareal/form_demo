@@ -9,9 +9,9 @@ class BankAccountsController < ApplicationController
 
   def create
     @bank_account = current_user.bank_accounts.new(bank_account_params)
+    @bank_account.save
+    redirect_to root_path
   end
-
-
 
   def show
     # @bank_account = current_user.bank_accounts.find_by(id: params[:id])
