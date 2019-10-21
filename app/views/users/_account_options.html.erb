@@ -1,0 +1,6 @@
+<div class="form-group">
+  <% options = options_for_select(
+    bank_accounts.order(:id).map{ |account| [account.id.to_s + ': ' + account.balance.to_s + '$', account.id] })
+  %>
+  <%= select_tag('account_id', options , prompt: "Please select an account:", class: "form-control", id: 'accounts') %>
+</div>

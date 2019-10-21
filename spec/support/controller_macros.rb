@@ -1,7 +1,6 @@
 FactoryBot.define do
   module ControllerMacros
     def login_user
-      binding.pry
       # Before each test, create and login the user
       before(:each) do
         @request.env["devise.mapping"] = Devise.mappings[:user]

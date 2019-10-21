@@ -1,5 +1,5 @@
 <%= render 'shared/error_messages', object: @user %>
-<%= form_for @user, url: withdraw_user_path, method: :get do |f|  %>
+<%= form_for @user, remote: true,  url: withdraw_user_path, method: :get do |f|  %>
   <div class="form-group">
     <%= f.label 'Money' %>
     <%= number_field_tag :money, 0, required: true%>
@@ -7,10 +7,9 @@
   <p>Status: <span id="status"> Input money</span></p>
   <div class="form-group">
     <%= f.label 'Bank account' %>
-    <% options = options_for_select(
-      @user.bank_accounts.order(:id).map{ |account| [account.id.to_s + ': ' + account.balance.to_s + '$', account.id] })
-    %>
-    <%= select_tag('account_id', options , prompt: "Please select an account:", class: "form-control", id: 'accounts') %>
+    <div id="account-options">
+      <%= render partial: 'account_options', locals: {bank_accounts: @user.bank_accounts } %>
+    </div>
     <%= f.submit 'Withdraw', id: "btn-withdraw"%>
   </div>
 <% end %>

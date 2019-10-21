@@ -1,1 +1,5 @@
-alert('aa')
+$('#status').text("<%= @result.status %>");
+
+if( "<%= @result.status %>" == "success") {
+  $('#account-options').html("<%= j (render partial: 'account_options', locals: { bank_accounts: @result.data }) %>")
+}
