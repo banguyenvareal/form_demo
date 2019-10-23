@@ -7,11 +7,8 @@
   <p>Status: <span id="status"> Input money</span></p>
   <div class="form-group">
     <%= f.label 'Bank account' %>
-     <select id="account-options">
-       <option value="">Select your account</option>
-     </select>
+     <%= select_tag('account_id', nil , prompt: "Please select an account:", id: 'account-options') %>
     </div>
     <%= f.submit 'Withdraw', id: "btn-withdraw"%>
   </div>
 <% end %>
-<button id="get-accounts" >get accounts</button>

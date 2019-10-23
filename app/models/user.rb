@@ -18,5 +18,14 @@ class User < ApplicationRecord
       )
     end
     user
-end
+  end
+
+   def find_bank_accounts
+    cache_key = "#{self.cache_key}/find_bank_accounts"
+    # binding.pry
+    Rails.cache.fetch(cache_key, expires_in: 10.minutes) do
+      # binding.pry
+      self.bank_accounts
+    end
+  end
 end

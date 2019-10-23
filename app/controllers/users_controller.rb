@@ -8,6 +8,5 @@ class UsersController < ApplicationController
 
   def new_withdraw
     @user = current_user
-    @bank_accounts = @user.bank_accounts
   end
 end
