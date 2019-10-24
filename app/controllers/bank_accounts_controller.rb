@@ -1,8 +1,9 @@
 class BankAccountsController < ApplicationController
   def index
-    @bank_accounts = Rails.cache.fetch("accounts", expires_in: 1.minute) {
-      BankAccount.all.to_a
+    @bank_accounts = Rails.cache.fetch("accounts/#{current_user.id}", expires_in: 10.seconds) {
+      current_user.bank_accounts.all.to_a if current_user
     }
+
     respond_to do |format|
       format.html
       format.json { render json: @bank_accounts }

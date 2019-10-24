@@ -3,14 +3,13 @@ class WithdrawService
     @user = user
   end
 
-  def withdraw(money)
-    total_money = @user.bank_accounts.pluck(:balance).sum
+  def withdraw(money, bank_accounts)
+    total_money = bank_accounts.pluck(:balance).sum
     return result = OpenStruct.new(status: 'fail') if
       total_money < money
 
     ActiveRecord::Base.transaction do
       n = 0
-      bank_accounts = @user.bank_accounts.order(:id).to_a
       while money > 0
         bank_account = bank_accounts[n]
         diff_money = bank_account.balance - money
