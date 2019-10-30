@@ -9,18 +9,25 @@
 
 <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
+    var events = [];
+    $.ajax({
+      url: '/schedule_tests',
+      type: 'get',
+      async: false,
+      success: function(data) {
+        events = $.map(data, function(item, i){
+          return { title: item.name, start: item.date }
+        });
+      }
+    });
 
+    var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
       plugins: [ 'dayGrid' ],
-      events: [
-        {
-          title: 'All Day Event',
-          start: '2019-10-10'
-        }
-      ]
+      events: events
     });
     calendar.render();
   });
 </script>
 <div id="calendar"></div>
+
