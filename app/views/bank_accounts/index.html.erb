@@ -1,15 +1,75 @@
-<link href="https://cdn.jsdelivr.net/npm/select2@4.0.11/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.11/dist/js/select2.min.js"></script>
-<% if user_signed_in? %>
-  <% @bank_accounts.each do |bank_account| %>
-    <%= link_to bank_account.name, bank_account_path(bank_account) %>
-    <br>
-  <% end %>
-  <%= link_to 'Create new bank account', new_bank_account_path %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<div class="container-fluid" style="background-color: #343a40;">
+  <div class="container" style="padding-right: 15px;">
+    <nav class="navbar navbar-expand navbar-dark bg-dark col-12">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+<div class="container-fluid" style="margin-top: 8px;">
+  <div class="container-fluid row">
+    <div class="col-2">
+      <div class="list-group">
+        <h2>Shop</h2>
+        <a href="#" class="list-group-item">Category 1</a>
+        <a href="#" class="list-group-item">Category 2</a>
+        <a href="#" class="list-group-item">Category 3</a>
+        <a href="#" class="list-group-item">Category 4</a>
+        <a href="#" class="list-group-item">Category 5</a>
+        <a href="#" class="list-group-item">Category 6</a>
+        <a href="#" class="list-group-item">Category 7</a>
+        <a href="#" class="list-group-item">Category 8</a>
+        <a href="#" class="list-group-item">Category 9</a>
+        <a href="#" class="list-group-item">Category 10</a>
+        <a href="#" class="list-group-item">Category 11</a>
+        <a href="#" class="list-group-item">Category 12</a>
+      </div>
+    </div>
+    <div class="col-8 container" style="padding-right: 42px; padding-left: 55px">
+     <p><%= @content %></p>
+    </div>
+    <div class="col-2">
+      <div class="list-group">
+        <h2>Options</h2>
+        <a href="#" class="list-group-item">Category 1</a>
+        <a href="#" class="list-group-item">Category 2</a>
+        <a href="#" class="list-group-item">Category 3</a>
+        <a href="#" class="list-group-item">Category 4</a>
+        <a href="#" class="list-group-item">Category 5</a>
+        <a href="#" class="list-group-item">Category 6</a>
+        <a href="#" class="list-group-item">Category 7</a>
+        <a href="#" class="list-group-item">Category 8</a>
+        <a href="#" class="list-group-item">Category 9</a>
+        <a href="#" class="list-group-item">Category 10</a>
+        <a href="#" class="list-group-item">Category 11</a>
+        <a href="#" class="list-group-item">Category 12</a>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="container-fluid text-center" style="background-color: #343a40; color: white">
+  <p>vareal vn</p>
   <br>
-  <%= link_to 'Withdraw', new_withdraw_user_path(current_user) %>
-  <br>
-  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to "Sign in with google", user_google_oauth2_omniauth_authorize_path %> <br>
-<% end %>
+  <small>detech tower, mai dich, cau giay, ha noi</small>
+</footer>

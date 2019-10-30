@@ -1,34 +1,5 @@
 class BankAccountsController < ApplicationController
   def index
-    @bank_accounts = Rails.cache.fetch("accounts/#{current_user.id}", expires_in: 10.seconds) {
-      current_user.bank_accounts.all.to_a if current_user
-    }
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @bank_accounts }
-    end
-  end
-
-  def new
-    @bank_account = BankAccount.new
-  end
-
-  def create
-    @bank_account = current_user.bank_accounts.new(bank_account_params)
-    @bank_account.save
-    redirect_to root_path
-  end
-
-  def show
-    @bank_account = BankAccount.get_bank_account(params[:id])
-  end
-
-  private
-
-  def bank_account_params
-    params.require(:bank_account).permit(
-      :name, :balance
-    )
+    @content = 'Thứ trưởng Ngoại giao Bùi Thanh Sơn hôm qua cho biết Anh đã chuyển 4 hồ sơ cho cơ quan chức năng Việt Nam để "chắp nối thông tin, xác minh nhân thân nạn nhân". Các hồ sơ này đã được Bộ Công an Việt Nam tiếp nhận. Bộ Công an đã phối hợp với Công an Hà Tĩnh lấy mẫu tóc, móng tay của nhiều bố mẹ trình báo có con mất tích để xét nghiệm ADN và gửi sang Anh, phục vụ xác minh có thuộc danh sách 39 thi thể trong container hay không. Trong diễn biến khác, ngày 28/10 Công an Nghệ An xác nhận đang điều tra dấu hiệu "đưa người trốn đi nước ngoài trái phép" qua nội dung trình báo của 14 gia đình ở địa phương.'
   end
 end
